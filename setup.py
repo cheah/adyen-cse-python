@@ -12,12 +12,13 @@ src_dir = os.path.join(base_dir, "src")
 sys.path.insert(0, src_dir)
 
 requirements = [
-    'cryptography (>=2.0.0, <3.0.0)',
-    'pytz (>=2017.2)'
+    'cryptography (>=2.8.0, <3.0.0)',
+    'future (>=0.18.2)',
+    'pytz (>=2019.3)'
 ]
 
 setup(name='adyen-cse-python',
-      version='0.1.0',
+      version='0.2.0',
       description='[UNOFFICIAL] Adyen Client-side encryption library for Python',
       author='Michael Cheah',
       author_email='michael@cheah.xyz',

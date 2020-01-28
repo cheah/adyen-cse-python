@@ -1,4 +1,6 @@
 from datetime import datetime
+from builtins import bytes
+from builtins import object
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives.ciphers.aead import AESCCM
@@ -8,7 +10,7 @@ import json
 import base64
 
 
-class ClientSideEncrypter:
+class ClientSideEncrypter(object):
     def __init__(self, adyen_public_key):
         self.adyen_public_key = adyen_public_key
 
@@ -26,7 +28,7 @@ class ClientSideEncrypter:
         # Encrypt the actual card data with symmetric encryption
         aes_key = self._generate_aes_key()
         nonce = self._generate_nonce()
-        encrypted_card_data = self._encrypt_with_aes_key(aes_key, nonce, bytes(card_data_json_string))
+        encrypted_card_data = self._encrypt_with_aes_key(aes_key, nonce, bytes(card_data_json_string, encoding='utf-8'))
         encrypted_card_component = nonce + encrypted_card_data
 
         # Encrypt the AES Key with asymmetric encryption

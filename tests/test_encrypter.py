@@ -1,6 +1,7 @@
 from adyen_cse_python.encrypter import ClientSideEncrypter
 from cryptography.hazmat.primitives.ciphers.aead import AESCCM
 import base64
+import codecs
 
 PUB_EXPONENT = "10001"
 MODULUS = "9201EBD5DC974FDE613A85AFF2728627FD2C227F18CF1C864FBBA3781908BB7BD72C818FC37D0B70EF8708705C623D" \
@@ -36,10 +37,10 @@ def test_generate_adyen_nonce():
 
 # https://github.com/bcgit/bc-java/blob/master/prov/src/test/java/org/bouncycastle/jce/provider/test/AESTest.java
 def test_java_bouncy_castle_ccm_matching():
-    K = "404142434445464748494a4b4c4d4e4f".decode("hex")
-    N = "10111213141516".decode("hex")
-    P = "68656c6c6f20776f726c642121".decode("hex")
-    C = "39264f148b54c456035de0a531c8344f46db12b388".decode("hex")
+    K = codecs.decode("404142434445464748494a4b4c4d4e4f", "hex")
+    N = codecs.decode("10111213141516", "hex")
+    P = codecs.decode("68656c6c6f20776f726c642121", "hex")
+    C = codecs.decode("39264f148b54c456035de0a531c8344f46db12b388", "hex")
 
     cipher = AESCCM(K, tag_length=8)
     ciphertext = cipher.encrypt(N, P, None)
