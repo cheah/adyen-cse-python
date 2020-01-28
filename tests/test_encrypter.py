@@ -14,7 +14,7 @@ MODULUS = "9201EBD5DC974FDE613A85AFF2728627FD2C227F18CF1C864FBBA3781908BB7BD72C8
 def test_generate_card_data_json():
     cse = ClientSideEncrypter(PUB_EXPONENT + "|" + MODULUS)
     json = cse.generate_card_data_json("Test Name", "4111111111111111", "737", "01", "2018")
-    assert json['holderName'] == "test name"
+    assert json['holderName'] == "Test Name"
     assert json['expiryYear'] == "2018"
 
 
