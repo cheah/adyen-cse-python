@@ -12,7 +12,7 @@ src_dir = os.path.join(base_dir, "src")
 sys.path.insert(0, src_dir)
 
 requirements = [
-    'cryptography (>=2.8.0, <3.0.0)',
+    'cryptography (>=2.8.0, <4.0.0)',
     'future (>=0.18.2)',
     'pytz (>=2019.3)'
 ]
