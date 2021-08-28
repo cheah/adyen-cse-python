@@ -14,14 +14,15 @@ class ClientSideEncrypter(object):
     def __init__(self, adyen_public_key):
         self.adyen_public_key = adyen_public_key
 
-    """
-    Adyen Nonce Format:
-    
-    "adyenan" + "0_1_1" + "$" + "Base64-Encoded encrypted_aes_key" + "$" + "Base64-Encoded encrypted_card_component"
-    
-    """
-
     def generate_adyen_nonce(self, name, pan, cvc, expiry_month, expiry_year):
+        """
+        Generate Adyen Nonce from the provided card data.
+
+        Adyen Nonce Format:
+
+        "adyenan" + "0_1_1" + "$" + "Base64-Encoded encrypted_aes_key" + "$" + "Base64-Encoded encrypted_card_component"
+        """
+
         plain_card_data = self.generate_card_data_json(name, pan, cvc, expiry_month, expiry_year)
         card_data_json_string = json.dumps(plain_card_data, sort_keys=True)
 
