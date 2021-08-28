@@ -18,7 +18,7 @@ requirements = [
 ]
 
 setup(name='adyen-cse-python',
-      version='0.3.0',
+      version='0.3.1',
       description='[UNOFFICIAL] Adyen Client-side encryption library for Python',
       author='Michael Cheah',
       author_email='michael@cheah.xyz',
