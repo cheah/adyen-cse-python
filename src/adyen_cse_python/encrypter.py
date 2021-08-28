@@ -37,8 +37,8 @@ class ClientSideEncrypter(object):
 
         return "{}{}${}${}".format("adyenan",
                                    "0_1_1",
-                                   base64.standard_b64encode(encrypted_aes_key),
-                                   base64.standard_b64encode(encrypted_card_component))
+                                   base64.standard_b64encode(encrypted_aes_key).decode(),
+                                   base64.standard_b64encode(encrypted_card_component).decode())
 
     @staticmethod
     def generate_card_data_json(name, pan, cvc, expiry_month, expiry_year):
